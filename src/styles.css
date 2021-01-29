@@ -48,12 +48,24 @@ body {
   position: absolute;
   top: calc(-90px - var(--back-circle-size));
   right: -45%;
-  animation: show-down 1.2s 0.3s;
+}
+
+.container figure.animate {
+  animation: show-down 1.2s 0.75s;
   animation-fill-mode: backwards;
 }
 
 .container figure > img {
   width: 100%;
+  transition: all 0.2s;
+}
+
+.container figure > img.red {
+  filter: hue-rotate(279deg) saturate(2.5);
+}
+
+.container figure > img.blue {
+  filter: hue-rotate(148deg);
 }
 
 .container .title h2 {
@@ -100,6 +112,7 @@ body {
 
 .container .colors span {
   --bg-color: var(--green);
+  --shadow-color: #0002;
 
   display: inline-block;
   width: 23px;
@@ -109,10 +122,12 @@ body {
   border-radius: 50%;
   margin: 6px 0 14px;
   cursor: pointer;
+  transition: all 0.5s;
 }
 
 .container .colors span.active {
-  box-shadow: 0 0 0 1px #0002;
+  box-shadow: 0 0 0 1px var(--shadow-color);
+  animation: selected 0.9s;
 }
 
 .container .colors span + span {
@@ -125,6 +140,10 @@ body {
 
 .container .colors span:nth-child(4) {
   --bg-color: #3864ff;
+}
+
+.container .colors span:hover {
+  box-shadow: 0 0 0 1px var(--bg-color);
 }
 
 .container .sizes span {
@@ -200,5 +219,23 @@ body {
 
   to {
     opacity: 1;
+  }
+}
+
+@keyframes selected {
+  0% {
+    border: 2px solid white;
+  }
+
+  25% {
+    border: 6px solid white;
+  }
+
+  75% {
+    border: 6px solid white;
+  }
+
+  100% {
+    border: 2px solid white;
   }
 }
