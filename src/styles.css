@@ -3,6 +3,7 @@
   padding: 0;
   outline: 0;
   box-sizing: border-box;
+  cursor: default;
 }
 
 :root {
@@ -31,11 +32,8 @@ body {
   flex-shrink: 1;
   position: relative;
   border-radius: 8px 28px 8px 8px;
-  /* background: radial-gradient(
-    ellipse farthest-corner at 100% 5%,
-    #c4c4c4 30%,
-    transparent 50%
-  ); */
+  animation: blur-on 0.9s 0.2s;
+  animation-fill-mode: backwards;
 }
 
 .back-circle {
@@ -50,6 +48,8 @@ body {
   position: absolute;
   top: calc(-90px - var(--back-circle-size));
   right: -45%;
+  animation: show-down 1.2s 0.3s;
+  animation-fill-mode: backwards;
 }
 
 .container figure > img {
@@ -139,6 +139,7 @@ body {
   padding: 2px;
   cursor: pointer;
   margin-top: 6px;
+  transition: all 0.5s ease-out;
 }
 
 .container .sizes span + span {
@@ -149,6 +150,11 @@ body {
   color: white;
   background-color: var(--green);
   border-color: var(--green);
+}
+
+.container .sizes span:not(.active):hover {
+  border-color: var(--green);
+  color: var(--green);
 }
 
 .container .buy {
@@ -168,4 +174,31 @@ body {
   border-radius: 6px;
   box-shadow: 2px 2px 1px 2px #0001;
   cursor: pointer;
+}
+
+.container .buy button * {
+  cursor: pointer;
+}
+
+@keyframes show-down {
+  from {
+    opacity: 0;
+    transform: translateY(-10%);
+    pointer-events: none;
+  }
+
+  to {
+    opacity: 1;
+    pointer-events: auto;
+  }
+}
+
+@keyframes blur-on {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
 }
