@@ -1,10 +1,142 @@
+* {
+  margin: 0;
+  padding: 0;
+  outline: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --back-circle-size: 60px;
+  --gray: #8f8f8f;
+  --green: #b5db48;
+  --main-color: #29455f;
+}
+
+html,
 body {
-  font-family: Montserrat sans-serif;
+  height: 100%;
+}
+
+body {
+  font-family: Montserrat, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .container {
-  padding: 20px;
+  box-shadow: 0 4px 45px #3333;
+  flex-basis: 210px;
+  flex-shrink: 1;
+  position: relative;
+  border-radius: 8px 28px 8px 8px;
+  /* background: radial-gradient(
+    ellipse farthest-corner at 100% 5%,
+    #c4c4c4 30%,
+    transparent 50%
+  ); */
 }
 
 .back-circle {
+  height: var(--back-circle-size);
+  /* background: radial-gradient(
+    ellipse farthest-corner at 100% 25%,
+    #c4c4c4 40%,
+    transparent 80%
+  ); */
+}
+
+.container figure {
+  width: 300px;
+  position: absolute;
+  top: calc(-80px - var(--back-circle-size));
+  right: -60%;
+}
+
+.container figure > img {
+  width: 100%;
+}
+
+.container .title h2 {
+  margin: 2px 0 4px;
+  font-weight: 700;
+  color: var(--main-color);
+}
+
+.container .title h4 {
+  color: var(--gray);
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.container section {
+  padding: 20px;
+}
+
+.container .price {
+  text-align: right;
+  font-family: Open Sans, sans-serif;
+  color: var(--main-color);
+  font-weight: bold;
+  font-size: 1.3rem;
+}
+
+.container .price span {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--gray);
+}
+
+.container .sub-title {
+  font-weight: 500;
+  font-size: 0.8rem;
+  color: var(--gray);
+}
+
+.container .colors span {
+  --bg-color: var(--green);
+
+  display: inline-block;
+  width: 21px;
+  height: 21px;
+  background-color: var(--bg-color);
+  border-radius: 50%;
+  margin: 6px 0 14px;
+  cursor: pointer;
+}
+
+.container .colors span + span {
+  margin-left: 12px;
+}
+
+.container .colors span:nth-child(3) {
+  --bg-color: #ff3838;
+}
+
+.container .colors span:nth-child(4) {
+  --bg-color: #3864ff;
+}
+
+.container .sizes span {
+  width: 23px;
+  text-align: center;
+  display: inline-block;
+  color: var(--gray);
+  border: 1px solid #0002;
+  border-radius: 5px;
+  font-size: 0.83rem;
+  font-weight: 600;
+  padding: 2px;
+  cursor: pointer;
+  margin-top: 6px;
+}
+
+.container .sizes span + span {
+  margin-left: 6px;
+}
+
+.container .sizes span.active {
+  color: white;
+  background-color: var(--green);
+  border-color: var(--green);
 }
